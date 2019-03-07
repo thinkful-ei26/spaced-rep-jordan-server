@@ -28,9 +28,9 @@ app.use(bodyParser.json());
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", '*');
-    // res.header("Access-Control-Allow-Credentials", true);
-    // res.header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
-    // res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json,Authorization,authorization');
+    res.header("Access-Control-Allow-Credentials", true);
+    res.header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
+    res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json,Authorization,authorization');
     next();
   });
 
@@ -40,7 +40,7 @@ const jwtAuth = passport.authenticate('jwt', { session: false, failWithError: tr
 // Mount routers
 app.use('/auth/users', usersRouter);
 app.use('/auth/login', authRouter);
-app.use('/api/questions', jwtAuth, questionsRouter);
+app.use('/api/questions', questionsRouter);
 
 
 function runServer(port = PORT) {
