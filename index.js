@@ -16,7 +16,7 @@ const questionsRouter = require('./routes/questions');
 
 const app = express();
 passport.use(localStrategy);
-passport.use(jwtStrategy);
+// passport.use(jwtStrategy);
 
 app.use(
   morgan(process.env.NODE_ENV === 'production' ? 'common' : 'dev', {
