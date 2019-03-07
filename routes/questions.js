@@ -67,8 +67,8 @@ router.put('/current', (req, res) => {
 
         let adjustedArray = user.questions.map(question => {
 
-          if (question.next > length + 1) {
-            question.next = question.next - 1;
+          if (question.next > length + 3) {
+            question.next = question.next - 2;
           }
           question.next = question.next - 1;
           if (question.m >= length / 2 && question.m > 1) {
