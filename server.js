@@ -40,7 +40,7 @@ const jwtAuth = passport.authenticate('jwt', { session: false, failWithError: tr
 // Mount routers
 app.use('/auth/users', usersRouter);
 app.use('/auth/login', authRouter);
-app.use('/api/questions', questionsRouter);
+app.use('/api/questions', jwtAuth, questionsRouter);
 
 
 function runServer(port = PORT) {

@@ -31,7 +31,6 @@ router.put('/current', (req, res) => {
   let attemptsForTheCurrentWord = 0;
   let numberOfCorrectGuessesForCurrentWord = 0;
   let currentWord = '';
-  let response = '';
 
   User.findOne({
       _id: userId
@@ -42,7 +41,6 @@ router.put('/current', (req, res) => {
       user.questions.set(0, user.questions[user.head]);
 
       currentWord = user.questions[user.head];
-      response = `Sorry. The correct answer is: ${correctAnswer}`
 
       if (user.questions[user.head].answer === req.body.answer) {
         correctAnswer = user.questions[user.head].answer;
@@ -50,10 +48,6 @@ router.put('/current', (req, res) => {
         user.questions[user.head].score = user.questions[user.head].score + 1;
         user.questions.set(0, user.questions[user.head]);
       }
-      else {
-       return response
-      }
-
 
       if (user.questions[user.head].m + 1 === user.questions.length || user.questions[user.head].m + 1 === user.questions.length - 1 && user.questions[user.head].answer === req.body.answer) {
         let index = user.questions.indexOf(undefined);
