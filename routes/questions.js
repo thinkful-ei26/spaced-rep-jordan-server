@@ -3,15 +3,11 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/userschema');
-const passport = require('passport');
- 
-const router = express.Router();
+// const passport = require('passport')
 
-const localAuth = passport.authenticate('local', { session: false, failWithError: true });
+// router.use('/', passport.authenticate('jwt', { session: false, failWithError: true }))
 
-const jwtAuth = passport.authenticate('jwt', { session: false, failWithError: true });
-
-router.get('/', jwtAuth, (req, res, next) => {
+router.get('/', (req, res, next) => {
   const userId = req.user.id;
 
   User.findOne({
@@ -25,7 +21,7 @@ router.get('/', jwtAuth, (req, res, next) => {
     });
 });
 
-router.put('/current', localAuth, (req, res) => {
+router.put('/current', (req, res) => {
 
   const userId = req.user.id;
   let correctAnswer = '';
