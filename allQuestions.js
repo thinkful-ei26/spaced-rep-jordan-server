@@ -11,7 +11,7 @@ const user = {
             },
             {
             "text":"cardi",
-            "answer":"heard",    
+            "answer":"heart",    
             "score":0,
             "attempts":0,
             "m": 1,
